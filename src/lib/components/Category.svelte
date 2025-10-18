@@ -13,7 +13,7 @@
 	<ul class="ingredients">
 		{#each ingredientes as ingrediente (ingrediente)}
 			<li>
-				<Tag active>{ingrediente}</Tag>
+				<Tag active={false} selectable={true}>{ingrediente}</Tag>
 			</li>
 		{/each}
 	</ul>

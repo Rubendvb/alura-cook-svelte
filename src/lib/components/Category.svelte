@@ -2,7 +2,7 @@
 	import type { ICategory } from '$lib/interfaces/ICategory';
 	import SelectableIngredient from './SelectableIngredient.svelte';
 
-	let { nome, imagem, ingredientes, addIngredient, removeIngredient }: ICategory = $props();
+	let { nome, imagem, ingredientes }: ICategory = $props();
 </script>
 
 <div class="category-container">
@@ -13,7 +13,7 @@
 	<ul class="ingredients">
 		{#each ingredientes as ingredient (ingredient)}
 			<li>
-				<SelectableIngredient {ingredient} {addIngredient} {removeIngredient} />
+				<SelectableIngredient {ingredient} />
 			</li>
 		{/each}
 	</ul>

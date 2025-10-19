@@ -5,18 +5,6 @@
 	import Title from '$components/Title.svelte';
 
 	import categories from '$lib/json/categorias.json';
-
-	import { arrayList } from '$lib/stores/list';
-
-	function addIngredient(ingredient: string) {
-		if (!$arrayList.includes(ingredient)) {
-			$arrayList = [...$arrayList, ingredient];
-		}
-	}
-
-	function removeIngredient(ingredient: string) {
-		$arrayList = $arrayList.filter((item) => item !== ingredient);
-	}
 </script>
 
 <svelte:head>
@@ -24,7 +12,7 @@
 </svelte:head>
 
 <div class="list-container">
-	<List ingredients={$arrayList} />
+	<List />
 
 	<div class="divider"></div>
 </div>
@@ -39,7 +27,7 @@
 
 	<ul class="categories">
 		{#each categories as category (category.nome)}
-			<Category {...category} {addIngredient} {removeIngredient} />
+			<Category {...category} />
 		{/each}
 	</ul>
 

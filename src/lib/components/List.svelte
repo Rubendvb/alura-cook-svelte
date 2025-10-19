@@ -1,14 +1,13 @@
 <script>
+	import { arrayList } from '$lib/stores/list';
 	import Tag from './Tag.svelte';
-
-	let { ingredients } = $props();
 </script>
 
 <section class="list">
 	<h2>Sua lista:</h2>
 
 	<ul class="ingredients">
-		{#each ingredients as ingredient (ingredient)}
+		{#each $arrayList as ingredient (ingredient)}
 			<li>
 				<Tag active>{ingredient}</Tag>
 			</li>

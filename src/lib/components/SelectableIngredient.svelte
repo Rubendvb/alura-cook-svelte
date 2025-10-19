@@ -10,10 +10,14 @@
 
 		if (selected) {
 			if (!$arrayList.includes(ingredient)) {
-				$arrayList = [...$arrayList, ingredient];
+				// $arrayList = [...$arrayList, ingredient];
+
+				arrayList.addingIngredient(ingredient);
 			}
 		} else {
-			$arrayList = $arrayList.filter((item) => item !== ingredient);
+			// $arrayList = $arrayList.filter((item) => item !== ingredient);
+
+			arrayList.removeIngredient(ingredient);
 		}
 	}
 </script>

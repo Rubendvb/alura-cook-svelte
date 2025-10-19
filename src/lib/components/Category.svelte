@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { ICategory } from '$lib/interfaces/ICategory';
-	import Tag from './Tag.svelte';
+	import SelectableIngredient from './SelectableIngredient.svelte';
 
-	let { nome, imagem, ingredientes }: ICategory = $props();
+	let { nome, imagem, ingredientes, addIngredient, removeIngredient }: ICategory = $props();
 </script>
 
 <div class="category-container">
@@ -11,9 +11,9 @@
 	<h3 class="category-name">{nome}</h3>
 
 	<ul class="ingredients">
-		{#each ingredientes as ingrediente (ingrediente)}
+		{#each ingredientes as ingredient (ingredient)}
 			<li>
-				<Tag active={false} selectable={true}>{ingrediente}</Tag>
+				<SelectableIngredient {ingredient} {addIngredient} {removeIngredient} />
 			</li>
 		{/each}
 	</ul>

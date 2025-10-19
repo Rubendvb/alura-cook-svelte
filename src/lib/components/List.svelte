@@ -1,7 +1,7 @@
 <script>
 	import Tag from './Tag.svelte';
 
-	let ingredients = ['Alho', 'Manteiga', 'Ovos'];
+	let { ingredients } = $props();
 </script>
 
 <section class="list">

@@ -1,16 +1,10 @@
 <script lang="ts">
-	let { children, active = false, selectable = false } = $props();
-
-	function handleClick() {
-		if (selectable) {
-			active = !active;
-		}
-	}
+	let { children, active = false } = $props();
 </script>
 
-<button class="tag active" class:active onclick={handleClick}>
+<div class="tag active" class:active>
 	{@render children?.()}
-</button>
+</div>
 
 <style>
 	.tag {

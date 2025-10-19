@@ -1,22 +1,21 @@
 <script lang="ts">
 	import Category from '$components/Category.svelte';
-	import Footer from '$components/Footer.svelte';
-	import Header from '$components/Header.svelte';
 	import List from '$components/List.svelte';
 	import Tag from '$components/Tag.svelte';
 	import Title from '$components/Title.svelte';
+
 	import categories from '$lib/json/categorias.json';
 
-	let arrayList: string[] = $state([]);
+	import { arrayList } from '$lib/stores/list';
 
 	function addIngredient(ingredient: string) {
-		if (!arrayList.includes(ingredient)) {
-			arrayList.push(ingredient);
+		if (!$arrayList.includes(ingredient)) {
+			$arrayList = [...$arrayList, ingredient];
 		}
 	}
 
 	function removeIngredient(ingredient: string) {
-		arrayList = arrayList.filter((item) => item !== ingredient);
+		$arrayList = $arrayList.filter((item) => item !== ingredient);
 	}
 </script>
 
@@ -24,54 +23,34 @@
 	<title>Alura Cook</title>
 </svelte:head>
 
-<div class="main-container">
-	<Header />
+<div class="list-container">
+	<List ingredients={$arrayList} />
 
-	<div class="main-style">
-		<div class="list-container">
-			<List ingredients={arrayList} />
-
-			<div class="divider"></div>
-		</div>
-
-		<main>
-			<Title tag={'h1'}>Ingredientes</Title>
-
-			<div class="info">
-				<p>Selecione abaixo os ingredientes que você deseja usar nesta refeição:</p>
-				<p>*Atenção: consideramos que você tenha em casa sal, pimenta e água.</p>
-			</div>
-
-			<ul class="categories">
-				{#each categories as category (category.nome)}
-					<Category {...category} {addIngredient} {removeIngredient} />
-				{/each}
-			</ul>
-
-			<div class="searchRecipes">
-				<a href="/receitas">
-					<Tag active size="lg">Buscar Receitas</Tag>
-				</a>
-			</div>
-		</main>
-	</div>
+	<div class="divider"></div>
 </div>
 
-<Footer />
+<main>
+	<Title tag={'h1'}>Ingredientes</Title>
+
+	<div class="info">
+		<p>Selecione abaixo os ingredientes que você deseja usar nesta refeição:</p>
+		<p>*Atenção: consideramos que você tenha em casa sal, pimenta e água.</p>
+	</div>
+
+	<ul class="categories">
+		{#each categories as category (category.nome)}
+			<Category {...category} {addIngredient} {removeIngredient} />
+		{/each}
+	</ul>
+
+	<div class="searchRecipes">
+		<a href="/receitas">
+			<Tag active size="lg">Buscar Receitas</Tag>
+		</a>
+	</div>
+</main>
 
 <style>
-	.main-container {
-		display: flex;
-		flex-direction: column;
-		min-height: 100dvh;
-	}
-
-	.main-style {
-		text-align: center;
-		padding: 0 5vw 3.375rem;
-		flex: 1;
-	}
-
 	.list-container {
 		margin-bottom: 2rem;
 	}

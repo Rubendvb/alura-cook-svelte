@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Category from '$components/Category.svelte';
+	import Footer from '$components/Footer.svelte';
 	import Header from '$components/Header.svelte';
 	import List from '$components/List.svelte';
+	import Tag from '$components/Tag.svelte';
 	import Title from '$components/Title.svelte';
 	import categories from '$lib/json/categorias.json';
 
@@ -45,9 +47,17 @@
 					<Category {...category} {addIngredient} {removeIngredient} />
 				{/each}
 			</ul>
+
+			<div class="searchRecipes">
+				<a href="/receitas">
+					<Tag active size="lg">Buscar Receitas</Tag>
+				</a>
+			</div>
 		</main>
 	</div>
 </div>
+
+<Footer />
 
 <style>
 	.main-container {
@@ -87,5 +97,10 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: 1.5rem;
+	}
+
+	.searchRecipes {
+		display: flex;
+		justify-content: center;
 	}
 </style>

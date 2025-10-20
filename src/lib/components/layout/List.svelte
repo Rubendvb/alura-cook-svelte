@@ -1,6 +1,6 @@
 <script>
 	import { arrayList } from '$lib/stores/list';
-	import Tag from './Tag.svelte';
+	import Tag from '../shared/Tag.svelte';
 </script>
 
 <section class="list">

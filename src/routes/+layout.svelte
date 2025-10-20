@@ -1,9 +1,9 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.png';
 
-	import Footer from '$components/Footer.svelte';
-	import Header from '$components/Header.svelte';
-	import List from '$components/List.svelte';
+	import Footer from '$components/layout/Footer.svelte';
+	import Header from '$components/layout/Header.svelte';
+	import List from '$components/layout/List.svelte';
 
 	import { arrayList } from '$lib/stores/list';
 

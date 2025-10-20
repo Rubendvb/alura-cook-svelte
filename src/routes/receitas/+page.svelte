@@ -1,6 +1,6 @@
 <script>
-	import Recipe from '$components/Recipe.svelte';
-	import Title from '$components/Title.svelte';
+	import Recipe from '$components/recipes/Recipe.svelte';
+	import Title from '$components/shared/Title.svelte';
 </script>
 
 <svelte:head>

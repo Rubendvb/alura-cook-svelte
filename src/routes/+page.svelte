@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { beforeNavigate } from '$app/navigation';
-	import Category from '$components/Category.svelte';
-	import Tag from '$components/Tag.svelte';
-	import Title from '$components/Title.svelte';
+	import Category from '$components/ingredients/Category.svelte';
+	import Tag from '$components/shared/Tag.svelte';
+	import Title from '$components/shared/Title.svelte';
 
 	import categories from '$lib/json/categorias.json';
 	import { arrayList } from '$lib/stores/list';

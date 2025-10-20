@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { arrayList } from '$lib/stores/list';
-	import Tag from './Tag.svelte';
+	import Tag from '../shared/Tag.svelte';
 
 	let { ingredient } = $props();
 	let selected = $derived($arrayList.includes(ingredient));

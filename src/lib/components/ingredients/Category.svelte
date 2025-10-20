@@ -1,7 +1,8 @@
 <script lang="ts">
-	import type { ICategory } from '$lib/interfaces/ICategory';
-	import Card from './Card.svelte';
+	import Card from '../shared/Card.svelte';
 	import SelectableIngredient from './SelectableIngredient.svelte';
+
+	import type { ICategory } from '$lib/interfaces/ICategory';
 
 	let { nome, imagem, ingredientes }: ICategory = $props();
 </script>

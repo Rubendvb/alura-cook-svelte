@@ -5,12 +5,13 @@
 		children?: Snippet;
 		active?: boolean;
 		size?: 'md' | 'lg';
+		disabled?: boolean;
 	};
 
-	let { children, active = false, size = 'md' }: Props = $props();
+	let { children, active = false, size = 'md', disabled = false }: Props = $props();
 </script>
 
-<div class="tag {size}" class:active>
+<div class="tag {size}" class:active class:disabled>
 	{@render children?.()}
 </div>
 
@@ -35,5 +36,10 @@
 	.lg {
 		font-size: 1.125rem;
 		padding: 1rem 1.5rem;
+	}
+
+	.disabled {
+		opacity: 0.5;
+		cursor: default;
 	}
 </style>

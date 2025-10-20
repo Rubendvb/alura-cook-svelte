@@ -1,30 +1,29 @@
 <script lang="ts">
 	import type { ICategory } from '$lib/interfaces/ICategory';
+	import Card from './Card.svelte';
 	import SelectableIngredient from './SelectableIngredient.svelte';
 
 	let { nome, imagem, ingredientes }: ICategory = $props();
 </script>
 
-<div class="category-container">
-	<img class="category-image" src="/icones/categorias_ingredientes/{imagem}" alt={nome} />
+<Card>
+	<div class="category-container">
+		<img class="category-image" src="/icones/categorias_ingredientes/{imagem}" alt={nome} />
 
-	<h3 class="category-name">{nome}</h3>
+		<h3 class="category-name">{nome}</h3>
 
-	<ul class="ingredients">
-		{#each ingredientes as ingredient (ingredient)}
-			<li>
-				<SelectableIngredient {ingredient} />
-			</li>
-		{/each}
-	</ul>
-</div>
+		<ul class="ingredients">
+			{#each ingredientes as ingredient (ingredient)}
+				<li>
+					<SelectableIngredient {ingredient} />
+				</li>
+			{/each}
+		</ul>
+	</div>
+</Card>
 
 <style>
 	.category-container {
-		width: 300px;
-		min-height: 100%;
-		background-color: var(--branco);
-		box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.1);
 		padding: 0.75rem 0.5rem;
 	}
 

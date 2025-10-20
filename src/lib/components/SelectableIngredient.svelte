@@ -3,17 +3,13 @@
 	import Tag from './Tag.svelte';
 
 	let { ingredient } = $props();
-	let selected = $state(false);
+	let selected = $derived($arrayList.includes(ingredient));
 
 	function handleClick() {
-		selected = !selected;
+		if (!selected) {
+			// $arrayList = [...$arrayList, ingredient];
 
-		if (selected) {
-			if (!$arrayList.includes(ingredient)) {
-				// $arrayList = [...$arrayList, ingredient];
-
-				arrayList.addingIngredient(ingredient);
-			}
+			arrayList.addingIngredient(ingredient);
 		} else {
 			// $arrayList = $arrayList.filter((item) => item !== ingredient);
 

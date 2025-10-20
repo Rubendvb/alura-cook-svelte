@@ -1,7 +1,11 @@
 <script lang="ts">
+	import favicon from '$lib/assets/favicon.png';
+
 	import Footer from '$components/Footer.svelte';
 	import Header from '$components/Header.svelte';
-	import favicon from '$lib/assets/favicon.png';
+	import List from '$components/List.svelte';
+
+	import { arrayList } from '$lib/stores/list';
 
 	let { children } = $props();
 </script>
@@ -14,6 +18,14 @@
 	<Header />
 
 	<div class="main-style">
+		{#if $arrayList.length}
+			<div class="list-container">
+				<List />
+
+				<div class="divider"></div>
+			</div>
+		{/if}
+
 		{@render children?.()}
 	</div>
 
@@ -31,5 +43,16 @@
 		text-align: center;
 		padding: 0 5vw 3.375rem;
 		flex: 1;
+	}
+
+	.list-container {
+		margin-bottom: 2rem;
+	}
+
+	.divider {
+		width: 40vw;
+		height: 2px;
+		background-color: var(--verde);
+		margin: 0 auto;
 	}
 </style>

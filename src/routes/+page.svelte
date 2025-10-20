@@ -1,21 +1,24 @@
 <script lang="ts">
+	import { beforeNavigate } from '$app/navigation';
 	import Category from '$components/Category.svelte';
-	import List from '$components/List.svelte';
 	import Tag from '$components/Tag.svelte';
 	import Title from '$components/Title.svelte';
 
 	import categories from '$lib/json/categorias.json';
+	import { arrayList } from '$lib/stores/list';
+
+	let emptyList = $derived($arrayList.length === 0);
+
+	beforeNavigate((navigation) => {
+		if (emptyList && navigation.to?.route.id === '/receitas') {
+			navigation.cancel();
+		}
+	});
 </script>
 
 <svelte:head>
 	<title>Alura Cook</title>
 </svelte:head>
-
-<div class="list-container">
-	<List />
-
-	<div class="divider"></div>
-</div>
 
 <main>
 	<Title tag={'h1'}>Ingredientes</Title>
@@ -33,23 +36,12 @@
 
 	<div class="searchRecipes">
 		<a href="/receitas">
-			<Tag active size="lg">Buscar Receitas</Tag>
+			<Tag active size="lg" disabled={emptyList}>Buscar Receitas</Tag>
 		</a>
 	</div>
 </main>
 
 <style>
-	.list-container {
-		margin-bottom: 2rem;
-	}
-
-	.divider {
-		width: 40vw;
-		height: 2px;
-		background-color: var(--verde);
-		margin: 0 auto;
-	}
-
 	.info {
 		margin-bottom: 3.375rem;
 	}

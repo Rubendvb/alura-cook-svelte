@@ -6,7 +6,7 @@
 	let { imagem, ingredientes, nome }: IRecipe = $props();
 </script>
 
-<Card>
+<Card --width="280px">
 	<img class="recipe-img" src="/imagens/receitas/{imagem}" alt={nome} />
 
 	<div class="recipe-info">

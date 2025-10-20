@@ -1,6 +1,7 @@
 <script>
+	import MyIngredient from './MyIngredient.svelte';
+
 	import { arrayList } from '$lib/stores/list';
-	import Tag from '../shared/Tag.svelte';
 </script>
 
 <section class="list">
@@ -9,7 +10,7 @@
 	<ul class="ingredients">
 		{#each $arrayList as ingredient (ingredient)}
 			<li>
-				<Tag active>{ingredient}</Tag>
+				<MyIngredient {ingredient} />
 			</li>
 		{/each}
 	</ul>

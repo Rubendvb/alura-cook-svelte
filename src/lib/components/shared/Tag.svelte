@@ -26,6 +26,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		transition: 0.2s;
 	}
 
 	.active {

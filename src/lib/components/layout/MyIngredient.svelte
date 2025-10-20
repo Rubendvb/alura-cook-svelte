@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade, scale } from 'svelte/transition';
 	import Tag from '$components/shared/Tag.svelte';
 
 	import { arrayList } from '$lib/stores/list';
@@ -10,7 +11,7 @@
 	}
 </script>
 
-<div class="my-ingredient-container">
+<div class="my-ingredient-container" transition:scale={{ delay: 200 }}>
 	<Tag active>
 		<button class="close" aria-label="Botão remover" onclick={removeIngredient}></button>
 		{ingredient}

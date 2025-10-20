@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { beforeNavigate } from '$app/navigation';
 	import Category from '$components/ingredients/Category.svelte';
-	import Tag from '$components/shared/Tag.svelte';
+	import TagLink from '$components/shared/TagLink.svelte';
 	import Title from '$components/shared/Title.svelte';
 
 	import categories from '$lib/json/categorias.json';
@@ -35,9 +35,7 @@
 	</ul>
 
 	<div class="searchRecipes">
-		<a href="/recipes">
-			<Tag active size="lg" disabled={emptyList}>Buscar Receitas</Tag>
-		</a>
+		<TagLink href="/recipes" disabled={emptyList}>Buscar Receitas</TagLink>
 	</div>
 </main>
 

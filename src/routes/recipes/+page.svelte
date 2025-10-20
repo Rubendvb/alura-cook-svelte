@@ -5,6 +5,7 @@
 	import { arrayList } from '$lib/stores/list';
 
 	import recipes from '$lib/json/receitas.json';
+	import TagLink from '$components/shared/TagLink.svelte';
 
 	let recipesFiltered = $derived(
 		recipes.filter((recipe) =>
@@ -30,16 +31,20 @@
 		{/if}
 	</div>
 
-	<ul class="recipes">
-		{#each recipesFiltered as recipe (recipe.nome)}
-			<li>
-				<Recipe {...recipe} />
-			</li>
-		{/each}
-	</ul>
-</main>
+	{#if recipesFiltered.length}
+		<ul class="recipes">
+			{#each recipesFiltered as recipe (recipe.nome)}
+				<li>
+					<Recipe {...recipe} />
+				</li>
+			{/each}
+		</ul>
+	{/if}
 
-<a href="/">Voltar</a>
+	<div class="edit-list">
+		<TagLink href="/">Editar lista</TagLink>
+	</div>
+</main>
 
 <style>
 	.info {
@@ -61,5 +66,10 @@
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: 1.5rem;
+	}
+
+	.edit-list {
+		display: flex;
+		justify-content: center;
 	}
 </style>

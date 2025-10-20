@@ -10,7 +10,7 @@
 	let emptyList = $derived($arrayList.length === 0);
 
 	beforeNavigate((navigation) => {
-		if (emptyList && navigation.to?.route.id === '/receitas') {
+		if (emptyList && navigation.to?.route.id === '/recipes') {
 			navigation.cancel();
 		}
 	});
@@ -35,7 +35,7 @@
 	</ul>
 
 	<div class="searchRecipes">
-		<a href="/receitas">
+		<a href="/recipes">
 			<Tag active size="lg" disabled={emptyList}>Buscar Receitas</Tag>
 		</a>
 	</div>

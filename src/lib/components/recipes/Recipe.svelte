@@ -1,12 +1,16 @@
-<script>
+<script lang="ts">
 	import Card from '../shared/Card.svelte';
+
+	import type { IRecipe } from '$lib/interfaces/IRecipe';
+
+	let { imagem, ingredientes, nome }: IRecipe = $props();
 </script>
 
 <Card>
-	<img class="recipe-img" src="/imagens/receitas/alho_assado.png" alt="Alho assado" />
+	<img class="recipe-img" src="/imagens/receitas/{imagem}" alt={nome} />
 
 	<div class="recipe-info">
-		<h3 class="recipe-name">Alho assado</h3>
+		<h3 class="recipe-name">{nome}</h3>
 	</div>
 </Card>
 
